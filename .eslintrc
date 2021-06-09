@@ -15,7 +15,12 @@
     "comma-spacing": "off",
 "object-curly-spacing": "off",
     "eol-last": "off",
-    "require-jsdoc": "off"
+    "require-jsdoc": "off",
+    "no-trailing-spaces": "off",
+    "spaced-comment": "off",
+    "padded-blocks": "off",
+    "operator-linebreak": "off",
+    "no-multi-spaces": "off"
   },
   "extends": ["eslint:recommended", "google"]
 }
