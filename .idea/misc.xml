@@ -3,7 +3,10 @@
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />
   </component>
+<<<<<<< HEAD
   <component name="WebPackConfiguration">
     <option name="mode" value="DISABLED" />
   </component>
+=======
+>>>>>>> a58664fa (listeners)
 </project>

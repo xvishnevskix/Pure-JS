@@ -4,12 +4,7 @@ export class Excel {
     constructor(selector, options) {
         this.$el = $(selector)
         this.components = options.components || []
-
-
     }
-=======
-    }
-
 
     getRoot() {
         const $root = $.create('div', 'excel')
@@ -30,4 +25,5 @@ export class Excel {
 
         this.components.forEach(component => component.init())
     }
+
 }
