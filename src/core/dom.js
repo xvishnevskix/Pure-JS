@@ -22,6 +22,10 @@ class Dom {
     this.$el.addEventListener(eventType, callback)
   }
 
+  off(eventType, callback) {
+    this.$el.removeEventListener(eventType,callback)
+  }
+
 
   append(node) {
     if (node instanceof Dom) {
@@ -35,6 +39,14 @@ class Dom {
     }
 
     return this
+  }
+
+  closest(selector) {
+    return $(this.$el.closest(selector))
+  }
+
+  getCoords() {
+    return this.$el.getBoundingClientRect()
   }
 }
 
