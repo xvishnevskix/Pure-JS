@@ -11,10 +11,16 @@ function toColumn(col) {
   `
 }
 
-function createRow(content) {
+   function toCell() {
+   return `
+     <div class="cell" contenteditable></div>
+  `
+ }
+
+function createRow(index, content) {
     return `
     <div class="row">
-      <div class="row-info"></div>
+      <div class="row-info">${index ? index : ''}</div>
       <div class="row-data">${content}</div>
     </div>
   `
@@ -34,11 +40,15 @@ export function createTable(rowsCount = 30) {
         .map(toColumn) //преобразовываем в колонну
         .join('') //соединяем
 
-    rows.push(createRow(cols)) // создание строки для колонн
+    rows.push(createRow(null,cols)) // создание строки для колонн
 
 
     for (let i = 0; i < rowsCount; i++) {
-        rows.push(createRow( ))
+        const cells = new Array(colsCount)
+            .fill('')
+            .map(toCell)
+            .join('')
+        rows.push(createRow(i+1, cells))
     }
 
     return rows.join('')
