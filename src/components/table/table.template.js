@@ -5,18 +5,20 @@ const CODES = {
 }
 
 
-function toColumn(col) {
+function toColumn(col, index) {
     return `
-    <div class="column" data-type="resizable">
+    <div class="column" data-type="resizable" data-col="${index}">
     ${col}
     <div class="col-resize" data-resize="col"></div>
     </div>
   `
 }
 
-   function toCell() {
+   function toCell(_, col) {
    return `
-     <div class="cell" contenteditable></div>
+     <div class="cell" 
+     contenteditable data-col="${col}" // добавляем индекс колонны для ячейки
+     ></div>
   `
  }
 
