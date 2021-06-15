@@ -2,16 +2,21 @@ import {$} from '@core/dom'
 
 export class Excel {
     constructor(selector, options) {
-        this.$el = $(selector)
+        this.$el = $(selector)  //this.el - контейнер с дивом app
         this.components = options.components || []
     }
 
-    getRoot() {
+    getRoot() {     //возвращает корневую ноду для экселя
         const $root = $.create('div', 'excel')
 
         this.components = this.components.map(Component => {
             const $el = $.create('div', Component.className)
             const component = new Component($el)
+
+            if (component.name) {
+                window['c' + component.name] = component
+            }
+
             $el.html(component.toHTML())
             $root.append($el)
             return component
@@ -25,5 +30,4 @@ export class Excel {
 
         this.components.forEach(component => component.init())
     }
-
 }
