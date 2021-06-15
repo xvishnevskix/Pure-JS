@@ -2,11 +2,11 @@ import {$} from '@core/dom'
 
 export class Excel {
     constructor(selector, options) {
-        this.$el = $(selector)
+        this.$el = $(selector)  //this.el - контейнер с дивом app
         this.components = options.components || []
     }
 
-    getRoot() {
+    getRoot() {     //возвращает корневую ноду для экселя
         const $root = $.create('div', 'excel')
 
         this.components = this.components.map(Component => {

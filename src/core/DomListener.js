@@ -2,6 +2,7 @@ import {capitalize} from '@core/utils'
 
 export class DomListener {
   constructor($root, listeners = []) {
+    //$root - тот корневой элемент, на который будут вешаться слушатели
     if (!$root) {
       throw new Error(`No $root provided for DomListener!`)
     }
