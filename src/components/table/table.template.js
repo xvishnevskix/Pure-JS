@@ -1,38 +1,46 @@
-
 const CODES = {
     A: 65,
     Z: 90
 }
 
+// function toCell(row, col) {
+//   return `
+//     <div class="cell" contenteditable data-col="${col}"></div>
+//   `
+// }
+
+function toCell(row) {
+    return function(_, col) {
+        return `
+      <div 
+        class="cell" 
+        contenteditable 
+        data-col="${col}"
+        data-type="cell"
+        data-id="${row}:${col}"
+      ></div>
+    `
+    }
+}
 
 function toColumn(col, index) {
     return `
     <div class="column" data-type="resizable" data-col="${index}">
-    ${col}
-    <div class="col-resize" data-resize="col"></div>
+      ${col}
+      <div class="col-resize" data-resize="col"></div>
     </div>
   `
 }
 
-   function toCell(_, col) {
-   return `
-     <div class="cell" 
-     contenteditable data-col="${col}" // добавляем индекс колонны для ячейки
-     ></div>
-  `
- }
-
 function createRow(index, content) {
-    const resize = index
-        ? '<div class="row-resize" data-resize="row"></div>'
-        : ''
+    const resize = index ? '<div class="row-resize" ' +
+        'data-resize="row"></div>' : ''
     return `
     <div class="row" data-type="resizable">
       <div class="row-info">
         ${index ? index : ''}
         ${resize}
-        
-        </div>
+      </div>
       <div class="row-data">${content}</div>
     </div>
   `
@@ -52,15 +60,16 @@ export function createTable(rowsCount = 30) {
         .map(toColumn) //преобразовываем в колонну
         .join('') //соединяем
 
-    rows.push(createRow(null,cols)) // создание строки для колонн
+    rows.push(createRow(null, cols))
 
-
-    for (let i = 0; i < rowsCount; i++) {
+    for (let row = 0; row < rowsCount; row++) {
         const cells = new Array(colsCount)
             .fill('')
-            .map(toCell)
+            // .map((_, col) => toCell(row, col))
+            .map(toCell(row))
             .join('')
-        rows.push(createRow(i+1, cells))
+
+        rows.push(createRow(row + 1, cells))
     }
 
     return rows.join('')
