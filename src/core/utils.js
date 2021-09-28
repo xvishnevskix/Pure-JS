@@ -14,3 +14,10 @@ export function range(start, end) {
       .fill('')
       .map((_, index) => start + index)
 }
+
+export function storage(key, data = null) {
+      if (!data) { //если нет данных, то тогда storage работает как геттер(вернуть)
+        return JSON.parse(localStorage.getItem(key)) //нет данных - парсим из локалстораджа
+      }
+      localStorage.setItem(key, JSON.stringify(data))
+}
