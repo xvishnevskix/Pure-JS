@@ -24,17 +24,6 @@ class Dom {
     return this.$el.textContent.trim()
   }
 
-  text(text) {
-    if (typeof text === 'string') {
-      this.$el.textContent = text
-      return this
-    }
-    if (this.$el.tagName.toLowerCase() === 'input') {
-      return this.$el.value.trim()
-    }
-    return this.$el.textContent.trim()
-  }
-
   clear() {
     this.html('')
     return this
@@ -108,38 +97,20 @@ class Dom {
 
   addClass(className) {
     this.$el.classList.add(className)
+    return this
   }
 
   removeClass(className) {
     this.$el.classList.remove(className)
-  }
-
-  id(parse) {     //парсит наш айдишник
-    if (parse) {
-      const parsed = this.id().split(':')
-      return {   //parsed - массив, у которого 0 элемент строка, 1 - кол
-        row: +parsed[0],  //приводим к интеджеру
-        col: +parsed[1]
-      }
-    }
-    return this.data.id
-  }
-
-  focus() {
-    this.$el.focus()
     return this
-  }
-
-  addClass(className) {
-    this.$el.classList.add(className)
   }
 }
 
-  export function $(selector) {
+export function $(selector) {
   return new Dom(selector)
 }
 
-  $.create = (tagName, classes = '') => {
+$.create = (tagName, classes = '') => {
   const el = document.createElement(tagName)
   if (classes) {
     el.classList.add(classes)
