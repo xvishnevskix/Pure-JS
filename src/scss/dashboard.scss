@@ -5,7 +5,15 @@
   a {
     text-decoration: none;
     color: #000000;
+  }
 
+  p {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 23px;
+    letter-spacing: initial;
+    line-height: 40px;
+    text-align: center;
   }
   &__header {
     position: fixed;
@@ -28,8 +36,8 @@
   }
 
   &__create {
-    width: 160px;
-    height: 160px;
+    width: 260px;
+    height: 150px;
     background: #fff;
     border-radius: 15px;
     border: 1px solid #dadce0;
@@ -49,12 +57,16 @@
   }
 
   &__view {
+    display: flex;
     max-width: 1000px;
     margin: 0 auto;
+    justify-content: center;
+    align-items: center;
   }
 
   &__table {
     padding: 1rem;
+    display: block;
   }
 
   &__list-header {
